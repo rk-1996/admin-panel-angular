@@ -23,10 +23,10 @@ import { UserModule } from 'app/main/apps/user/user.module';
 import { AppsModule } from 'app/main/apps/apps.module';
 
 const appRoutes: Routes = [
-    {
-        path: 'user',
-        loadChildren: () => import('./main/apps/user/user.module').then(m => m.UserModule)
-    },
+    // {
+    //     path: 'user',
+    //     loadChildren: () => import('./main/apps/user/user.module').then(m => m.UserModule)
+    // },
     // {
     //     path: 'e-commerce',
     //     loadChildren: () => import('./../app/main/apps/e-commerce/e-commerce.module').then(m => m.EcommerceModule)

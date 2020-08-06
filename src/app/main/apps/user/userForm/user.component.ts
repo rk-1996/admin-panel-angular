@@ -45,7 +45,6 @@ export class UserComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    console.log('TEST');
     // Reactive Form
     this.form = this._formBuilder.group({
       company: [

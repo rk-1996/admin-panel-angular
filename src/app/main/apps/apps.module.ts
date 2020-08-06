@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { FuseSharedModule } from '@fuse/shared.module';
-import { EcommerceModule } from './e-commerce/e-commerce.module'
+import { RolesModule } from './e-commerce/roles.module'
 
 const routes = [
     {
-        path: 'e-commerce',
-        loadChildren: () => import('./e-commerce/e-commerce.module').then(m => m.EcommerceModule)
+        path: 'roles',
+        loadChildren: () => import('./e-commerce/roles.module').then(m => m.RolesModule)
     }
 ];
 
@@ -15,7 +15,7 @@ const routes = [
     imports: [
         RouterModule.forChild(routes),
         FuseSharedModule,
-        EcommerceModule
+        RolesModule
     ]
 })
 export class AppsModule {

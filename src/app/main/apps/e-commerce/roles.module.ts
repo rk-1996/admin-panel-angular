@@ -15,6 +15,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AgmCoreModule } from '@agm/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatCardModule } from '@angular/material/card';
+
 
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
@@ -27,43 +30,49 @@ import { EcommerceOrdersComponent } from 'app/main/apps/e-commerce/orders/orders
 import { EcommerceOrdersService } from 'app/main/apps/e-commerce/orders/orders.service';
 import { EcommerceOrderComponent } from 'app/main/apps/e-commerce/order/order.component';
 import { EcommerceOrderService } from 'app/main/apps/e-commerce/order/order.service';
+import { UserComponent } from './userForm/user.component';
 
 const routes: Routes = [
     {
-        path     : 'products',
+        path: 'customers',
         component: EcommerceProductsComponent,
-        resolve  : {
+        resolve: {
             data: EcommerceProductsService
         }
     },
     {
-        path     : 'products/:id',
+        path: 'products/:id',
         component: EcommerceProductComponent,
-        resolve  : {
+        resolve: {
             data: EcommerceProductService
         }
     },
     {
-        path     : 'products/:id/:handle',
+        path: 'products/:id/:handle',
         component: EcommerceProductComponent,
-        resolve  : {
+        resolve: {
             data: EcommerceProductService
         }
     },
     {
-        path     : 'orders',
+        path: 'orders',
         component: EcommerceOrdersComponent,
-        resolve  : {
+        resolve: {
             data: EcommerceOrdersService
         }
     },
     {
-        path     : 'orders/:id',
+        path: 'customers/add-customers',
+        component: UserComponent
+    },
+    {
+        path: 'orders/:id',
         component: EcommerceOrderComponent,
-        resolve  : {
+        resolve: {
             data: EcommerceOrderService
         }
-    }
+    },
+
 ];
 
 @NgModule({
@@ -71,9 +80,10 @@ const routes: Routes = [
         EcommerceProductsComponent,
         EcommerceProductComponent,
         EcommerceOrdersComponent,
-        EcommerceOrderComponent
+        EcommerceOrderComponent,
+        UserComponent
     ],
-    imports     : [
+    imports: [
         RouterModule.forChild(routes),
 
         MatButtonModule,
@@ -89,7 +99,8 @@ const routes: Routes = [
         MatSnackBarModule,
         MatTableModule,
         MatTabsModule,
-
+        MatCardModule,
+        MatProgressBarModule,
         NgxChartsModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyD81ecsCj4yYpcXSLFcYU97PvRsE_X8Bx8'
@@ -98,13 +109,15 @@ const routes: Routes = [
         FuseSharedModule,
         FuseWidgetModule
     ],
-    providers   : [
+    providers: [
         EcommerceProductsService,
         EcommerceProductService,
         EcommerceOrdersService,
         EcommerceOrderService
+    ],
+    exports: [
+        UserComponent
     ]
 })
-export class EcommerceModule
-{
+export class RolesModule {
 }

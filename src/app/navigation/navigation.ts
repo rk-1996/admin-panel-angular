@@ -60,65 +60,28 @@ export const navigation: FuseNavigation[] = [
             //     ]
             // }
             {
-                id: 'e-commerce',
-                title: 'E-Commerce',
-                translate: 'NAV.ECOMMERCE',
-                type: 'collapsable',
-                icon: 'shopping_cart',
-                children: [
-                    {
-                        id: 'products',
-                        title: 'Products',
-                        type: 'item',
-                        url: '/apps/e-commerce/products',
-                        exactMatch: true
-                    },
-                    {
-                        id: 'productDetail',
-                        title: 'Product Detail',
-                        type: 'item',
-                        url: '/apps/e-commerce/products/1/printed-dress',
-                        // exactMatch: true
-                    },
-                    {
-                        id: 'orders',
-                        title: 'Orders',
-                        type: 'item',
-                        url: '/apps/e-commerce/orders',
-                        exactMatch: true
-                    },
-                    {
-                        id: 'orderDetail',
-                        title: 'Order Detail',
-                        type: 'item',
-                        url: '/apps/e-commerce/orders/1',
-                        exactMatch: true
-                    }
-                ]
-            },
-            {
-                id: 'user',
-                title: 'User',
+                id: 'roles',
+                title: 'Roles',
                 translate: 'NAV.USER.TITLE',
                 type: 'collapsable',
                 icon: 'person',
                 children: [
                     {
-                        id: 'user',
-                        title: 'User',
+                        id: 'customers',
+                        title: 'Customers',
                         type: 'item',
-                        url: '/user/listing',
+                        url: '/apps/roles/customers',
                         exactMatch: true
                     },
-                    {
-                        id: 'userAdd',
-                        title: 'User Add',
-                        type: 'item',
-                        url: '/user/add-user',
-                        // exactMatch: true
-                    },
+                    // {
+                    //     id: 'userAdd',
+                    //     title: 'User Add',
+                    //     type: 'item',
+                    //     url: '/apps/roles/user/add-user',
+                    //     // exactMatch: true
+                    // },
                 ]
-            },
+            }
         ]
     }
 ];
