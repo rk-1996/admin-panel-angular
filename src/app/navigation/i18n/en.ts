@@ -10,6 +10,15 @@ export const locale = {
             'USER': {
                 'TITLE': 'User',
                 'BADGE': '25'
+            },
+            'CUSTOMER': {
+                'TITLE': 'Customers',
+            },
+            'ADMIN': {
+                'TITLE': 'Admin',
+            },
+            'PHOTOGRAPHER': {
+                'TITLE': 'Photographer',
             }
         }
     }

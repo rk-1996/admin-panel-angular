@@ -4,9 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
-export class EcommerceProductsService implements Resolve<any>
+export class CustomerListService implements Resolve<any>
 {
-    products: any[];
+    customers: any[];
     onProductsChanged: BehaviorSubject<any>;
 
     /**
@@ -30,31 +30,27 @@ export class EcommerceProductsService implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
         return new Promise((resolve, reject) => {
-            console.log('11');
             Promise.all([
-                this.getProducts()
-            ]).then(
-                () => {
-                    console.log('TESE');
-                    resolve();
-                },
+                this.getCustomer()
+            ]).then(() => {
+                resolve();
+            },
                 reject
             );
         });
     }
 
     /**
-     * Get products
+     * Get Customer List
      *
      * @returns {Promise<any>}
      */
-    getProducts(): Promise<any> {
+    getCustomer(): Promise<any> {
         return new Promise((resolve, reject) => {
-            console.log('TEST');
-            this._httpClient.get('api/e-commerce-products')
+            this._httpClient.get('api/customers')
                 .subscribe((response: any) => {
-                    this.products = response;
-                    this.onProductsChanged.next(this.products);
+                    this.customers = response;
+                    this.onProductsChanged.next(this.customers);
                     resolve(response);
                 }, reject);
         });

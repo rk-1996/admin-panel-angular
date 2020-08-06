@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { IPhotographer } from '../../../models/photographer.model';
 
 @Injectable()
-export class EcommerceProductsService implements Resolve<any>
+export class PhotographerListService implements Resolve<any>
 {
-    products: any[];
-    onProductsChanged: BehaviorSubject<any>;
+    photographers: any[];
+    onPhotographerChanged: BehaviorSubject<any>;
 
     /**
      * Constructor
@@ -18,7 +19,7 @@ export class EcommerceProductsService implements Resolve<any>
         private _httpClient: HttpClient
     ) {
         // Set the defaults
-        this.onProductsChanged = new BehaviorSubject({});
+        this.onPhotographerChanged = new BehaviorSubject({});
     }
 
     /**
@@ -30,32 +31,32 @@ export class EcommerceProductsService implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
         return new Promise((resolve, reject) => {
-            console.log('11');
             Promise.all([
-                this.getProducts()
-            ]).then(
-                () => {
-                    console.log('TESE');
-                    resolve();
-                },
+                this.getPhotographer()
+            ]).then(() => {
+                resolve();
+            },
                 reject
             );
         });
     }
 
     /**
-     * Get products
+     * Get Photographer List
      *
      * @returns {Promise<any>}
      */
-    getProducts(): Promise<any> {
+    getPhotographer(): Promise<any> {
         return new Promise((resolve, reject) => {
-            console.log('TEST');
-            this._httpClient.get('api/e-commerce-products')
-                .subscribe((response: any) => {
-                    this.products = response;
-                    this.onProductsChanged.next(this.products);
-                    resolve(response);
+            this._httpClient.get('api/photographers')
+                .subscribe((photographerList: IPhotographer[]) => {
+                    photographerList.map((photographer: IPhotographer) => {
+                        photographer.fullName = photographer.firstName + ' ' + photographer.lastName;
+                        return photographer;
+                    });
+                    this.photographers = photographerList;
+                    this.onPhotographerChanged.next(this.photographers);
+                    resolve(photographerList);
                 }, reject);
         });
     }

@@ -81,7 +81,76 @@ export const navigation: FuseNavigation[] = [
                     //     // exactMatch: true
                     // },
                 ]
+            },
+            {
+                id: 'customer',
+                title: 'Customer',
+                translate: 'NAV.CUSTOMER.TITLE',
+                type: 'collapsable',
+                icon: 'person',
+                children: [
+                    {
+                        id: 'customers',
+                        title: 'View Customers',
+                        type: 'item',
+                        url: '/apps/customer',
+                        exactMatch: true
+                    },
+                    {
+                        id: 'add',
+                        title: 'Add Customer',
+                        type: 'item',
+                        url: '/apps/customer/add',
+                        exactMatch: true
+                    },
+                ]
+            },
+            {
+                id: 'admin',
+                title: 'Admin',
+                translate: 'NAV.ADMIN.TITLE',
+                type: 'collapsable',
+                icon: 'person',
+                children: [
+                    {
+                        id: 'admins',
+                        title: 'View Admins',
+                        type: 'item',
+                        url: '/apps/admin',
+                        exactMatch: true
+                    },
+                    {
+                        id: 'add',
+                        title: 'Add Admin',
+                        type: 'item',
+                        url: '/apps/admin/add',
+                        exactMatch: true
+                    },
+                ]
+            },
+            {
+                id: 'photographer',
+                title: 'Photographer',
+                translate: 'NAV.PHOTOGRAPHER.TITLE',
+                type: 'collapsable',
+                icon: 'person',
+                children: [
+                    {
+                        id: 'photographers',
+                        title: 'View Photographers',
+                        type: 'item',
+                        url: '/apps/photographer',
+                        exactMatch: true
+                    },
+                    {
+                        id: 'add',
+                        title: 'Add Photographer',
+                        type: 'item',
+                        url: '/apps/photographer/add',
+                        exactMatch: true
+                    },
+                ]
             }
         ]
-    }
+    },
 ];

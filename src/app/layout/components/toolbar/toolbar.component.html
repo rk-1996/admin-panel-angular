@@ -59,16 +59,16 @@
 
             <div class="toolbar-separator"></div>
 
-            <button mat-button fxHide fxShow.gt-xs
+            <!-- <button mat-button fxHide fxShow.gt-xs
                     class="language-button"
                     [matMenuTriggerFor]="languageMenu">
                 <div fxLayout="row" fxLayoutAlign="center center">
                     <img class="flag mr-8" [src]="'assets/icons/flags/'+selectedLanguage.flag+'.png'">
                     <span class="iso text-uppercase">{{selectedLanguage.id}}</span>
                 </div>
-            </button>
+            </button> -->
 
-            <mat-menu #languageMenu="matMenu" [overlapTrigger]="false">
+            <!-- <mat-menu #languageMenu="matMenu" [overlapTrigger]="false">
 
                 <button mat-menu-item *ngFor="let lang of languages" (click)="setLanguage(lang)">
                     <span fxLayout="row" fxLayoutAlign="start center">
@@ -77,16 +77,16 @@
                     </span>
                 </button>
 
-            </mat-menu>
+            </mat-menu> -->
 
             <div class="toolbar-separator" fxHide fxShow.gt-xs></div>
 
-            <button mat-icon-button
+            <!-- <button mat-icon-button
                     class="quick-panel-toggle-button"
                     (click)="toggleSidebarOpen('quickPanel')"
                     aria-label="Toggle quick panel">
                 <mat-icon class="secondary-text">format_list_bulleted</mat-icon>
-            </button>
+            </button> -->
 
             <div class="toolbar-separator" *ngIf="!hiddenNavbar && rightNavbar" fxHide fxShow.gt-xs></div>
 

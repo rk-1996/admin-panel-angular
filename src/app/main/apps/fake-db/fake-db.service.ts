@@ -2,7 +2,9 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 
 import { ECommerceFakeDb } from './e-commerce';
-import { CustomerFakeDb } from './customer'
+import { CustomerFakeDb } from './customer';
+import { AdminFakeDb } from './admin';
+import { PhotographerFakeDb } from './photographer';
 
 
 export class FakeDbService implements InMemoryDbService {
@@ -16,7 +18,9 @@ export class FakeDbService implements InMemoryDbService {
             'e-commerce-orders': ECommerceFakeDb.orders,
 
             //customer
-            'customers': CustomerFakeDb.customers
+            'customers': CustomerFakeDb.customers,
+            'admins': AdminFakeDb.admins,
+            'photographers': PhotographerFakeDb.photographers
         };
     }
 }

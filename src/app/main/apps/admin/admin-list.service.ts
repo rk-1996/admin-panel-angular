@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { IAdmin } from '../../../models/admin.model';
 
 @Injectable()
-export class EcommerceProductsService implements Resolve<any>
+export class AdminListService implements Resolve<any>
 {
-    products: any[];
+    admins: any[];
     onProductsChanged: BehaviorSubject<any>;
 
     /**
@@ -30,32 +31,32 @@ export class EcommerceProductsService implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
         return new Promise((resolve, reject) => {
-            console.log('11');
             Promise.all([
-                this.getProducts()
-            ]).then(
-                () => {
-                    console.log('TESE');
-                    resolve();
-                },
+                this.getAdmin()
+            ]).then(() => {
+                resolve();
+            },
                 reject
             );
         });
     }
 
     /**
-     * Get products
+     * Get Admin List
      *
      * @returns {Promise<any>}
      */
-    getProducts(): Promise<any> {
+    getAdmin(): Promise<any> {
         return new Promise((resolve, reject) => {
-            console.log('TEST');
-            this._httpClient.get('api/e-commerce-products')
-                .subscribe((response: any) => {
-                    this.products = response;
-                    this.onProductsChanged.next(this.products);
-                    resolve(response);
+            this._httpClient.get('api/admins')
+                .subscribe((adminList: IAdmin[]) => {
+                    adminList.map((admin:IAdmin) => {
+                        admin.fullName = admin.firstName + ' ' + admin.lastName;
+                        return admin;
+                    });
+                    this.admins = adminList;
+                    this.onProductsChanged.next(this.admins);
+                    resolve(adminList);
                 }, reject);
         });
     }
