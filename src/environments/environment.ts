@@ -4,7 +4,8 @@
 
 export const environment = {
     production: false,
-    hmr       : false
+    hmr: false,
+    apiUrl: 'http://stage-api.8710photography.com/api/v1/'
 };
 
 /*
