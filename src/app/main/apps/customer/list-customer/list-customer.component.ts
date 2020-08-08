@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { CustomerDataSource } from './list-customer-data-source';
 import { CustomerListService } from '../customer-list.service';
+// import { fuseAnimations } from '@fuse/animations';
+import { FuseUtils } from '@fuse/utils';
 
 @Component({
     selector: 'app-list-customer',

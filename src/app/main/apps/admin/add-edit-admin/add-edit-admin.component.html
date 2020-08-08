@@ -1,15 +1,16 @@
 <div id="forms" class="page-layout simple fullwidth" fxLayout="column">
 
     <!-- HEADER -->
-    <div class="header accent p-24 h-160" fxLayout="row" fxLayoutAlign="space-between center">
-        <!-- <div fxLayout="column" fxLayoutAlign="center start">
+    <div class="header accent p-24 h-160 style-all-listing-and-add-form-header" fxLayout="row"
+        fxLayoutAlign="space-between center">
+        <div fxLayout="column" fxLayoutAlign="center start">
             <div fxLayout="row" fxLayoutAlign="start center">
                 <mat-icon class="secondary-text s-18">home</mat-icon>
                 <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
-                <span class="secondary-text">Customer Interface</span>
+                <span class="secondary-text">Admin Interface</span>
             </div>
-            <div class="h1 mt-16">Add new Admin</div>
-        </div> -->
+            <div class="h1 mt-16">Add new admin</div>
+        </div>
         <button mat-raised-button class="save-product-button" [disabled]="userForm.invalid || form.pristine"
             *ngIf="pageType ==='add'">
             <span>ADD</span>

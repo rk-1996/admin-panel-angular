@@ -1,4 +1,4 @@
-<div id="list-page" class="page-layout carded fullwidth inner-scroll">
+<div id="list-customet" class="page-layout carded fullwidth inner-scroll">
 
     <!-- TOP BACKGROUND -->
     <div class="top-bg accent"></div>
@@ -8,8 +8,8 @@
     <div class="center">
 
         <!-- HEADER -->
-        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
-            fxLayoutAlign.gt-sm="space-between center">
+        <div class="header accent style-all-listing-and-add-form-header" fxLayout="column" fxLayoutAlign="center center"
+            fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
 
             <!-- APP TITLE -->
             <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
@@ -20,10 +20,9 @@
                     Customers
                 </span>
             </div>
-            <!-- / APP TITLE -->
 
             <!-- ADD BUTTON -->
-            <button mat-raised-button [routerLink]="'/apps/customer/add'"
+            <button mat-raised-button [routerLink]="'/apps/roles/customers/add-customers'"
                 class="add-product-button fuse-white mt-24 mt-md-0">
                 <span>ADD NEW CUSTOMER</span>
             </button>
@@ -98,7 +97,7 @@
                 <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
 
                 <mat-row *matRowDef="let product; columns: displayedColumns;" class="product" matRipple
-                    [routerLink]="'/apps/customer/edit/'+product.id+'/'+product.handle">
+                    [routerLink]="'/apps/e-commerce/products/'+product.id+'/'+product.handle">
                 </mat-row>
 
             </mat-table>
