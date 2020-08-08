@@ -7,20 +7,20 @@ export const navigation: FuseNavigation[] = [
         translate: 'NAV.APPLICATIONS',
         type: 'group',
         children: [
-            {
-                id: 'sample',
-                title: 'Sample',
-                translate: 'NAV.SAMPLE.TITLE',
-                type: 'item',
-                icon: 'email',
-                url: '/sample',
-                badge: {
-                    title: '25',
-                    translate: 'NAV.SAMPLE.BADGE',
-                    bg: '#F44336',
-                    fg: '#FFFFFF'
-                }
-            },
+            // {
+            //     id: 'sample',
+            //     title: 'Sample',
+            //     translate: 'NAV.SAMPLE.TITLE',
+            //     type: 'item',
+            //     icon: 'email',
+            //     url: '/sample',
+            //     badge: {
+            //         title: '25',
+            //         translate: 'NAV.SAMPLE.BADGE',
+            //         bg: '#F44336',
+            //         fg: '#FFFFFF'
+            //     }
+            // },
             // {
             //     id: 'user',
             //     title: 'User',
@@ -59,29 +59,29 @@ export const navigation: FuseNavigation[] = [
             //         }
             //     ]
             // }
-            {
-                id: 'roles',
-                title: 'Roles',
-                translate: 'NAV.USER.TITLE',
-                type: 'collapsable',
-                icon: 'person',
-                children: [
-                    {
-                        id: 'customers',
-                        title: 'Customers',
-                        type: 'item',
-                        url: '/apps/roles/customers',
-                        exactMatch: true
-                    },
-                    // {
-                    //     id: 'userAdd',
-                    //     title: 'User Add',
-                    //     type: 'item',
-                    //     url: '/apps/roles/user/add-user',
-                    //     // exactMatch: true
-                    // },
-                ]
-            },
+            // {
+            //     id: 'roles',
+            //     title: 'Roles',
+            //     translate: 'NAV.USER.TITLE',
+            //     type: 'collapsable',
+            //     icon: 'person',
+            //     children: [
+            //         {
+            //             id: 'customers',
+            //             title: 'Customers',
+            //             type: 'item',
+            //             url: '/apps/roles/customers',
+            //             exactMatch: true
+            //         },
+            //         // {
+            //         //     id: 'userAdd',
+            //         //     title: 'User Add',
+            //         //     type: 'item',
+            //         //     url: '/apps/roles/user/add-user',
+            //         //     // exactMatch: true
+            //         // },
+            //     ]
+            // },
             {
                 id: 'customer',
                 title: 'Customer',
