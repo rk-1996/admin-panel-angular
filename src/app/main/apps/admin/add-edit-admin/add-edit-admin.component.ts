@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ApiService } from '../../../../common/services/api.service';
+import { StatusList } from '../../../../common/constant/status-list.constant';
+import { NotificationService } from '../../../../common/services/notification.service';
+import { Router } from '@angular/router';
+import { ValidateInteger } from '../../../../common/validation/custom-form-froup.validator';
 
 @Component({
   selector: 'app-add-edit-admin',
@@ -8,29 +13,66 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AddEditAdminComponent implements OnInit {
   pageType: string;
-
-  userForm: FormGroup;
+  adminForm: FormGroup;
+  statusList = StatusList;
   constructor(
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _apiService: ApiService,
+    private _notificationService: NotificationService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
     this.pageType = 'add';
-    this.userForm = this._formBuilder.group({
+    this.adminForm = this._formBuilder.group({
       firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      lastName: ['',],
       username: ['', Validators.required],
-      email: ['', Validators.required],
-      phone: ['', Validators.required],
-      profitSharePercentage: ['', Validators.required],
-      status: ['', Validators.required],
-      profilePhoto: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      mobile_number: [, [Validators.required, Validators.minLength(7), Validators.maxLength(15), ValidateInteger]],
+      profitSharePercentage: [''],
+      status: [this.statusList[0].id, Validators.required],
+      photo: [],
       unique_url: ['', Validators.required],
-      illinoisEmail: ['', Validators.required],
+      illinoisEmail: ['', [Validators.email]],
     });
   }
-  onFileInput(event) {
-    console.log('TEST');
+  public findInvalidControls() {
+    const invalid = [];
+    const controls = this.adminForm.controls;
+    for (const name in controls) {
+      if (controls[name].invalid) {
+        console.log('name', name);
+        invalid.push(name);
+      }
+    }
+    return invalid;
+  }
+  async formSubmit() {
+    try {
+      this.adminForm.disable();
+      const adminData = { ...this.adminForm.value };
+      adminData.full_name = adminData.firstName + ' ' + adminData.lastName;
+      const addAdminResponse = await this._apiService.addAdmin(adminData);
+      console.log('addAdminResponse', addAdminResponse);
+      this.adminForm.enable();
+      if (!addAdminResponse.status) {
+
+      } else {
+        this._notificationService.openSnakBar(addAdminResponse.message, 'success');
+        this._router.navigate(['/admin']);
+      }
+    } catch (error) {
+      console.log('error', error);
+    }
+  }
+  onFileChange(event) {
+    if (event.target.files && event.target.files.length) {
+      const file = event.target.files[0];
+      this.adminForm.patchValue({
+        photo: file
+      });
+    }
   }
 
 }

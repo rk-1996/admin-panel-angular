@@ -35,7 +35,7 @@ export class HttpService {
         }
         const headers = new HttpHeaders({
             [InterceptorSkipContentTypeHeader]: ''
-        })
+        });
         return this.httpClient.post(`${this.BASE_URL + url}`, formData,
             {
                 params: params,

@@ -26,9 +26,8 @@ import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AddEditAdminComponent } from './add-edit-admin/add-edit-admin.component';
 import { ListAdminComponent } from './list-admin/list-admin.component';
-import { AdminListService } from './admin-list.service';
 import { MaterialModule } from '../../../material/material.module';
-
+import { AdminService } from './list-admin/list-data.service';
 
 @NgModule({
   declarations: [AddEditAdminComponent, ListAdminComponent],
@@ -57,9 +56,9 @@ import { MaterialModule } from '../../../material/material.module';
     }),
 
     FuseSharedModule,
-    FuseWidgetModule
+    FuseWidgetModule,
   ],
-  providers: [AdminListService],
+  providers: [AdminService],
   exports: [
     AddEditAdminComponent, ListAdminComponent
   ]
