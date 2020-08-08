@@ -15,7 +15,7 @@ export class NotificationService {
       error: 'red-snackbar'
     }
     this._snackBar.open(message, 'Close', {
-      duration: 500000,
+      duration: 5000,
       horizontalPosition: 'end',
       verticalPosition: 'top',
       panelClass: [notifiactionTypeClassMapping[notificationType]]

@@ -6,6 +6,7 @@ import { fuseAnimations } from '@fuse/animations';
 import { ApiService } from '../../../common/services/api.service';
 import { Router } from '@angular/router';
 import { NotificationService } from '../../../common/services/notification.service';
+import { SharedDataService } from '../../../common/services/shared-data.service';
 
 @Component({
     selector: 'login',
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
         private _formBuilder: FormBuilder,
         private _apiService: ApiService,
         private _router: Router,
-        private _notificationService: NotificationService
+        private _notificationService: NotificationService,
+        private _sharedDataService: SharedDataService
     ) {
         // Configure the layout
         this._fuseConfigService.config = {
@@ -69,16 +71,20 @@ export class LoginComponent implements OnInit {
 
     async onSubmit() {
         try {
+            this.loginForm.disable();
             const value = { ...this.loginForm.value };
             const loginResponse = await this._apiService.login(value);
             if (loginResponse?.status) {
-                localStorage.setItem('access_token', loginResponse.access_token);
-                localStorage.setItem('user', JSON.stringify(loginResponse.data));
+                localStorage.setItem('access_token', loginResponse?.access_token);
+                localStorage.setItem('user', JSON.stringify(loginResponse?.data));
+                this._sharedDataService.changeUserName(loginResponse?.data?.full_name);
                 this._router.navigateByUrl('/');
             } else {
                 this._notificationService.openSnakBar(loginResponse?.message, 'error');
+                this.loginForm.enable();
             }
         } catch (error) {
+            this.loginForm.enable();
             console.log('error', error);
         }
     }
