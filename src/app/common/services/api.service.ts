@@ -17,5 +17,8 @@ export class ApiService {
     addAdmin(adminData) {
         return this.httpService.postWithFormData('add-admin', adminData);
     }
+    addCustomer(customerData) {
+        return this.httpService.postWithFormData('add-customer', customerData);
+    }
 
 }
