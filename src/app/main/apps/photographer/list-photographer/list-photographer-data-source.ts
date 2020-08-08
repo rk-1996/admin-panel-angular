@@ -29,11 +29,11 @@ export class PhotographerDataSource implements DataSource<any> {
             catchError(() => of([])),
             finalize(() => this.loadingSubject.next(false))
         ).subscribe(list => {
-            list.map((admin) => {
-                if (admin.status == '0') {
-                    admin.status = Status.INACTIVE
-                } else if (admin.status == '1') {
-                    admin.status = Status.ACTIVE
+            list.map((item) => {
+                if (item.status == '0') {
+                    item.status = Status.INACTIVE
+                } else if (item.status == '1') {
+                    item.status = Status.ACTIVE
                 }
             });
             this.listSubject.next(list);

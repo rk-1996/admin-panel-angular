@@ -34,8 +34,8 @@
         <!-- CONTENT CARD -->
         <div class="content-card">
 
-            <mat-table class="products-table" #table [dataSource]="dataSource" matSort [@animateStagger]="{value:'50'}"
-                fusePerfectScrollbar>
+            <mat-table id="matTable" class="products-table" #table [dataSource]="dataSource" matSort
+                [@animateStagger]="{value:'50'}" fusePerfectScrollbar>
 
                 <!-- ID Column -->
                 <ng-container matColumnDef="id">
@@ -102,8 +102,7 @@
 
             </mat-table>
 
-            <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10"
-                [pageSizeOptions]="[5, 10, 25, 100]">
+            <mat-paginator #paginator [length]="_customerService.total" [pageIndex]="pageIndex" [pageSize]="pageSize">
             </mat-paginator>
 
         </div>

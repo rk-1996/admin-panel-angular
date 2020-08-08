@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatRippleModule } from '@angular/material/core';
@@ -27,7 +26,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AddEditAdminComponent } from './add-edit-admin/add-edit-admin.component';
 import { ListAdminComponent } from './list-admin/list-admin.component';
 import { MaterialModule } from '../../../material/material.module';
-import { AdminService } from './list-admin/list-data.service';
+import { AdminService } from './list-admin/list-admin.service';
 
 @NgModule({
   declarations: [AddEditAdminComponent, ListAdminComponent],

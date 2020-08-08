@@ -27,7 +27,7 @@ import { CustomerRoutingModule } from './customer-routing.module';
 import { ListCustomerComponent } from './list-customer/list-customer.component';
 import { AddEditCustomerComponent } from './add-edit-customer/add-edit-customer.component';
 import { MaterialModule } from '../../../material/material.module';
-import { CustomerListService } from './customer-list.service';
+import { CustomerService } from './customer-list.service';
 
 
 @NgModule({
@@ -59,7 +59,7 @@ import { CustomerListService } from './customer-list.service';
     FuseWidgetModule
   ],
   providers: [
-    CustomerListService
+    CustomerService
   ],
   exports: [
     ListCustomerComponent, AddEditCustomerComponent

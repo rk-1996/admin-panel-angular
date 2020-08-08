@@ -8,7 +8,7 @@ export class AdminService {
     public total = 0;
     constructor(private http: HttpClient) { }
 
-    getAdminList(params) {
+    getList(params) {
         const newParams = {
             page: params.pageIndex + 1
         }

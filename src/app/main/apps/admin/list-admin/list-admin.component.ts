@@ -3,7 +3,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { fuseAnimations } from '../../../../../@fuse/animations/index';
 import { ListingConstant } from '../../../../common/constant/constant';
-import { AdminService } from './list-data.service';
+import { AdminService } from './list-admin.service';
 import { AdminDataSource } from './list-admin-data-source';
 import { tap } from 'rxjs/operators';
 import { merge } from 'rxjs';
