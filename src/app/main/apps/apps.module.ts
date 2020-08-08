@@ -10,16 +10,20 @@ const routes = [
         loadChildren: () => import('./e-commerce/roles.module').then(m => m.RolesModule)
     },
     {
-        path:'customer',
+        path: 'customer',
         loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule)
     },
     {
-        path:'admin',
+        path: 'admin',
         loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
     },
     {
-        path:'photographer',
+        path: 'photographer',
         loadChildren: () => import('./photographer/photographer.module').then(m => m.PhotographerModule)
+    },
+    {
+        path: 'login',
+        loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
     }
 ];
 

@@ -1,22 +1,14 @@
 // -----------------------------------------------------------------------------------------------------
 // @ Custom color maps for Fuse
 // -----------------------------------------------------------------------------------------------------
-$fuse-white: (
-    500: white,
-    contrast: (
-        500: $dark-primary-text
-    )
-);
+$fuse-white: (500: white,
+    contrast: (500: $dark-primary-text));
 
-$fuse-black: (
-    500: black,
-    contrast: (
-        500: $light-primary-text,
-    )
-);
+$fuse-black: (500: black,
+    contrast: (500: $light-primary-text,
+    ));
 
-$fuse-navy: (
-    50: #ECECEE,
+$fuse-navy: (50: #ECECEE,
     100: #C5C6CB,
     200: #9EA1A9,
     300: #7D818C,
@@ -30,8 +22,7 @@ $fuse-navy: (
     A200: #9EA1A9,
     A400: #5C616F,
     A700: #2D323E,
-    contrast: (
-        50: $dark-primary-text,
+    contrast: (50: $dark-primary-text,
         100: $dark-primary-text,
         200: $dark-primary-text,
         300: $light-primary-text,
@@ -45,15 +36,12 @@ $fuse-navy: (
         A200: $light-primary-text,
         A400: $light-primary-text,
         A700: $light-primary-text,
-    )
-);
+    ));
 
 // Generate Fuse color classes for custom palettes
-$custom_palettes: (
-    fuse-white: $fuse-white,
+$custom_palettes: (fuse-white: $fuse-white,
     fuse-black: $fuse-black,
-    fuse-navy: $fuse-navy
-);
+    fuse-navy: $fuse-navy);
 
 @include fuse-color-classes($custom_palettes);
 
@@ -62,8 +50,7 @@ $custom_palettes: (
 // -----------------------------------------------------------------------------------------------------
 
 // Angular Material typography
-$typography: mat-typography-config(
-    $font-family: 'Muli, Helvetica Neue, Arial, sans-serif',
+$typography: mat-typography-config($font-family: 'Muli, Helvetica Neue, Arial, sans-serif',
     $title: mat-typography-level(20px, 32px, 600),
     $body-2: mat-typography-level(14px, 24px, 600),
     $button: mat-typography-level(14px, 14px, 600),
@@ -80,6 +67,7 @@ $typography: mat-typography-config(
 // Import app and page component themes here to enable theming for them
 @import "src/app/layout/components/chat-panel/chat-panel.theme";
 @import "src/app/layout/components/toolbar/toolbar.theme";
+@import "src/app/main/apps/login/login.theme";
 
 // Define a mixin for easier access
 @mixin components-theme($theme) {
@@ -87,6 +75,9 @@ $typography: mat-typography-config(
     // Layout components
     @include chat-panel-theme($theme);
     @include toolbar-theme($theme);
+
+    // Pages
+    @include login-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -115,11 +106,9 @@ body.theme-default {
     @include components-theme($theme);
 
     // Generate Fuse color classes for primary, accent and warn colors
-    $palettes: (
-        primary: $default-primary-palette,
-        accent: $default-accent-palette,
-        warn: $default-warn-palette
-    );
+    $palettes: (primary: $default-primary-palette,
+            accent: $default-accent-palette,
+            warn: $default-warn-palette);
 
     @include fuse-color-classes($palettes);
 }
@@ -150,11 +139,9 @@ body.theme-yellow-light {
     @include components-theme($yellow-light-theme);
 
     // Generate Fuse color classes for primary, accent and warn colors
-    $palettes: (
-        primary: $yellow-light-theme-primary-palette,
-        accent: $yellow-light-theme-accent-palette,
-        warn: $yellow-light-theme-warn-palette
-    );
+    $palettes: (primary: $yellow-light-theme-primary-palette,
+            accent: $yellow-light-theme-accent-palette,
+            warn: $yellow-light-theme-warn-palette);
 
     @include fuse-color-classes($palettes);
 }
@@ -185,11 +172,9 @@ body.theme-blue-gray-dark {
     @include components-theme($blue-gray-dark-theme);
 
     // Generate Fuse color classes for primary, accent and warn colors
-    $palettes: (
-        primary: $blue-gray-dark-theme-primary-palette,
-        accent: $blue-gray-dark-theme-accent-palette,
-        warn: $blue-gray-dark-theme-warn-palette
-    );
+    $palettes: (primary: $blue-gray-dark-theme-primary-palette,
+            accent: $blue-gray-dark-theme-accent-palette,
+            warn: $blue-gray-dark-theme-warn-palette);
 
     @include fuse-color-classes($palettes);
 }
@@ -220,11 +205,9 @@ body.theme-pink-dark {
     @include components-theme($pink-dark-theme);
 
     // Generate Fuse color classes for primary, accent and warn colors
-    $palettes: (
-        primary: $pink-dark-theme-primary-palette,
-        accent: $pink-dark-theme-accent-palette,
-        warn: $pink-dark-theme-warn-palette
-    );
+    $palettes: (primary: $pink-dark-theme-primary-palette,
+            accent: $pink-dark-theme-accent-palette,
+            warn: $pink-dark-theme-warn-palette);
 
     @include fuse-color-classes($palettes);
 }
