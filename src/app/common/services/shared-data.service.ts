@@ -8,14 +8,14 @@ export class SharedDataService {
   constructor() {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
-      this.changeUserName(user?.full_name);
+      this.changeUserData(user);
     }
   }
   //Using any
-  private userNameSource = new BehaviorSubject('');
-  currentUserName = this.userNameSource.asObservable();
-  changeUserName(userName: string) {
-    this.userNameSource.next(userName);
+  private userDataSource = new BehaviorSubject('');
+  currentUserData = this.userDataSource.asObservable();
+  changeUserData(userData) {
+    this.userDataSource.next(userData);
   }
 
 }

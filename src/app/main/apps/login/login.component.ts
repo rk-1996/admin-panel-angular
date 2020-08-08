@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
             if (loginResponse?.status) {
                 localStorage.setItem('access_token', loginResponse?.access_token);
                 localStorage.setItem('user', JSON.stringify(loginResponse?.data));
-                this._sharedDataService.changeUserName(loginResponse?.data?.full_name);
+                this._sharedDataService.changeUserData(loginResponse?.data);
                 this._router.navigateByUrl('/');
             } else {
                 this._notificationService.openSnakBar(loginResponse?.message, 'error');
