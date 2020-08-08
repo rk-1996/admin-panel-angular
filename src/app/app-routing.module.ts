@@ -26,6 +26,10 @@ const routes: Routes = [
                 path: 'photographer',
                 loadChildren: () => import('./main/apps/photographer/photographer.module').then(m => m.PhotographerModule)
             },
+            {
+                path: 'sales-representative',
+                loadChildren: () => import('./main/apps/sales-representative/sales-representative.module').then(m => m.SalesRepresentativeModule)
+            },
         ]
     },
     {

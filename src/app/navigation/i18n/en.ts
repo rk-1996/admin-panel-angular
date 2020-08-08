@@ -19,6 +19,9 @@ export const locale = {
             },
             'PHOTOGRAPHER': {
                 'TITLE': 'Photographer',
+            },
+            'SALES_RE_PRESENTATIVE': {
+                'TITLE': 'Sales Representative',
             }
         }
     }

@@ -150,6 +150,29 @@ export const navigation: FuseNavigation[] = [
                         exactMatch: true
                     },
                 ]
+            },
+            {
+                id: 'salesRepresentative',
+                title: 'Sales Representative',
+                translate: 'NAV.SALES_RE_PRESENTATIVE.TITLE',
+                type: 'collapsable',
+                icon: 'person',
+                children: [
+                    {
+                        id: 'salesRepresentative',
+                        title: 'View Sales Representative',
+                        type: 'item',
+                        url: '/sales-representative',
+                        exactMatch: true
+                    },
+                    {
+                        id: 'add',
+                        title: 'Add Sales Representative',
+                        type: 'item',
+                        url: '/sales-representative/add',
+                        exactMatch: true
+                    },
+                ]
             }
         ]
     },

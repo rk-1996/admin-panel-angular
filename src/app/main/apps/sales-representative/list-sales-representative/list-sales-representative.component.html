@@ -17,7 +17,7 @@
                     shopping_basket
                 </mat-icon>
                 <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
-                    Customers
+                    Sales Representative
                 </span>
             </div>
 
@@ -38,18 +38,24 @@
                 [@animateStagger]="{value:'50'}" fusePerfectScrollbar>
 
                 <!-- ID Column -->
-                <ng-container matColumnDef="id">
+                <!-- <ng-container matColumnDef="id">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
                     <mat-cell *matCellDef="let product">
                         <p class="text-truncate">{{product.id}}</p>
                     </mat-cell>
-                </ng-container>
+                </ng-container> -->
 
                 <!-- Image Column -->
                 <ng-container matColumnDef="full_name">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Full name</mat-header-cell>
                     <mat-cell *matCellDef="let product">
                         <p class="text-truncate">{{product.full_name}}</p>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="username">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Username</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
+                        <p class="text-truncate">{{product.username}}</p>
                     </mat-cell>
                 </ng-container>
 
@@ -101,7 +107,8 @@
 
             </mat-table>
 
-            <mat-paginator #paginator [length]="_customerService.total" [pageIndex]="pageIndex" [pageSize]="pageSize">
+            <mat-paginator #paginator [length]="_salesRepresentativeService.total" [pageIndex]="pageIndex"
+                [pageSize]="pageSize">
             </mat-paginator>
 
         </div>
