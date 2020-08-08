@@ -20,5 +20,8 @@ export class ApiService {
     addCustomer(customerData) {
         return this.httpService.postWithFormData('add-customer', customerData);
     }
+    addSalesRepresentative(salesRepresentativeData){
+        return this.httpService.postWithFormData('add-sales-representative', salesRepresentativeData);
+    }
 
 }
