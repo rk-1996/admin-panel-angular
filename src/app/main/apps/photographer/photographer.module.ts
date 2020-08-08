@@ -27,7 +27,7 @@ import { PhotographerRoutingModule } from './photographer-routing.module';
 import { AddEditPhotographerComponent } from './add-edit-photographer/add-edit-photographer.component';
 import { ListPhotographerComponent } from './list-photographer/list-photographer.component';
 import { MaterialModule } from '../../../material/material.module';
-import { PhotographerListService } from './photographer-list.service';
+import { PhotographerService } from './photographer-list.service';
 
 
 @NgModule({
@@ -58,7 +58,7 @@ import { PhotographerListService } from './photographer-list.service';
     FuseSharedModule,
     FuseWidgetModule
   ],
-  providers: [PhotographerListService],
+  providers: [PhotographerService],
   exports: [
     AddEditPhotographerComponent, ListPhotographerComponent
   ]

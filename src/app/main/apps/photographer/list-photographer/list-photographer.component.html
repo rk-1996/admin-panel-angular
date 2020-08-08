@@ -35,8 +35,8 @@
         <!-- CONTENT CARD -->
         <div class="content-card">
 
-            <mat-table class="products-table" #table [dataSource]="dataSource" matSort [@animateStagger]="{value:'50'}"
-                fusePerfectScrollbar>
+            <mat-table id="matTable" class="products-table" #table [dataSource]="dataSource" matSort
+                [@animateStagger]="{value:'50'}" fusePerfectScrollbar>
 
                 <!-- ID Column -->
                 <ng-container matColumnDef="id">
@@ -47,10 +47,10 @@
                 </ng-container>
 
                 <!-- Image Column -->
-                <ng-container matColumnDef="fullName">
+                <ng-container matColumnDef="full_name">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Full name</mat-header-cell>
                     <mat-cell *matCellDef="let product">
-                        <p class="text-truncate">{{product.fullName}}</p>
+                        <p class="text-truncate">{{product.full_name}}</p>
                     </mat-cell>
                 </ng-container>
 
@@ -103,8 +103,8 @@
 
             </mat-table>
 
-            <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10"
-                [pageSizeOptions]="[5, 10, 25, 100]">
+            <mat-paginator #paginator [length]="_photographerService.total" [pageIndex]="pageIndex"
+                [pageSize]="pageSize">
             </mat-paginator>
 
         </div>

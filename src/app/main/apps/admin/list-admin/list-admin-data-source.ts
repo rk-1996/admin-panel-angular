@@ -24,7 +24,7 @@ export class AdminDataSource implements DataSource<any> {
         this.loadingSubject.complete();
     }
 
-    loadAdminList(sortDirection = 'asc', pageIndex = 0, pageSize = ListingConstant.itemPerPage) {
+    loadList(sortDirection = 'asc', pageIndex = 0, pageSize = ListingConstant.itemPerPage) {
         this.loadingSubject.next(true);
         this._adminService.getAdminList({ sortDirection: sortDirection, pageIndex: pageIndex, pageSize: pageSize }).pipe(
             catchError(() => of([])),

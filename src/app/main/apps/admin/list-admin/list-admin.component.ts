@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { fuseAnimations } from '../../../../../@fuse/animations/index';
 import { ListingConstant } from '../../../../common/constant/constant';
 import { AdminService } from './list-data.service';
-import { AdminDataSource } from './lesson-data-source';
+import { AdminDataSource } from './list-admin-data-source';
 import { tap } from 'rxjs/operators';
 import { merge } from 'rxjs';
 
@@ -34,18 +34,18 @@ export class ListAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource = new AdminDataSource(this._adminService);
-    this.loadLessonsPage();
+    this.loadList();
   }
   ngAfterViewInit() {
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
-        tap(() => this.loadLessonsPage())
+        tap(() => this.loadList())
       )
       .subscribe();
   }
-  loadLessonsPage() {
-    this.dataSource.loadAdminList(this.sort.direction, this.paginator.pageIndex, this.paginator.pageSize);
+  loadList() {
+    this.dataSource.loadList(this.sort.direction, this.paginator.pageIndex, this.paginator.pageSize);
     setTimeout(() => {
       const matTable = document.getElementById('matTable');
       matTable.scrollTop = 0;
