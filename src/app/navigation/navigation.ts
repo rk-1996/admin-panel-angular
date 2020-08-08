@@ -93,14 +93,14 @@ export const navigation: FuseNavigation[] = [
                         id: 'customers',
                         title: 'View Customers',
                         type: 'item',
-                        url: '/apps/customer',
+                        url: '/customer',
                         exactMatch: true
                     },
                     {
                         id: 'add',
                         title: 'Add Customer',
                         type: 'item',
-                        url: '/apps/customer/add',
+                        url: '/customer/add',
                         exactMatch: true
                     },
                 ]
@@ -116,14 +116,14 @@ export const navigation: FuseNavigation[] = [
                         id: 'admins',
                         title: 'View Admins',
                         type: 'item',
-                        url: '/apps/admin',
+                        url: '/admin',
                         exactMatch: true
                     },
                     {
                         id: 'add',
                         title: 'Add Admin',
                         type: 'item',
-                        url: '/apps/admin/add',
+                        url: '/admin/add',
                         exactMatch: true
                     },
                 ]
@@ -139,14 +139,14 @@ export const navigation: FuseNavigation[] = [
                         id: 'photographers',
                         title: 'View Photographers',
                         type: 'item',
-                        url: '/apps/photographer',
+                        url: '/photographer',
                         exactMatch: true
                     },
                     {
                         id: 'add',
                         title: 'Add Photographer',
                         type: 'item',
-                        url: '/apps/photographer/add',
+                        url: '/photographer/add',
                         exactMatch: true
                     },
                 ]

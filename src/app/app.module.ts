@@ -37,6 +37,22 @@ const appRoutes: Routes = [
         loadChildren: () => import('./main/apps/apps.module').then(m => m.AppsModule)
     },
     {
+        path: 'customer',
+        loadChildren: () => import('./main/apps/customer/customer.module').then(m => m.CustomerModule)
+    },
+    {
+        path: 'admin',
+        loadChildren: () => import('./main/apps/admin/admin.module').then(m => m.AdminModule)
+    },
+    {
+        path: 'photographer',
+        loadChildren: () => import('./main/apps/photographer/photographer.module').then(m => m.PhotographerModule)
+    },
+    {
+        path: 'login',
+        loadChildren: () => import('./main/apps/login/login.module').then(m => m.LoginModule)
+    },
+    {
         path: '**',
         redirectTo: 'sample'
     },
