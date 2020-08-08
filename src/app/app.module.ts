@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -22,41 +22,8 @@ import { SampleModule } from 'app/main/sample/sample.module';
 import { UserModule } from 'app/main/apps/user/user.module';
 import { AppsModule } from 'app/main/apps/apps.module';
 import { HttpConfigInterceptor } from './interceptor/http.interceptor';
+import { AppRoutingModule } from './app-routing.module';
 
-const appRoutes: Routes = [
-    // {
-    //     path: 'user',
-    //     loadChildren: () => import('./main/apps/user/user.module').then(m => m.UserModule)
-    // },
-    // {
-    //     path: 'e-commerce',
-    //     loadChildren: () => import('./../app/main/apps/e-commerce/e-commerce.module').then(m => m.EcommerceModule)
-    // },
-    {
-        path: 'apps',
-        loadChildren: () => import('./main/apps/apps.module').then(m => m.AppsModule)
-    },
-    {
-        path: 'customer',
-        loadChildren: () => import('./main/apps/customer/customer.module').then(m => m.CustomerModule)
-    },
-    {
-        path: 'admin',
-        loadChildren: () => import('./main/apps/admin/admin.module').then(m => m.AdminModule)
-    },
-    {
-        path: 'photographer',
-        loadChildren: () => import('./main/apps/photographer/photographer.module').then(m => m.PhotographerModule)
-    },
-    {
-        path: 'login',
-        loadChildren: () => import('./main/apps/login/login.module').then(m => m.LoginModule)
-    },
-    {
-        path: '**',
-        redirectTo: 'sample'
-    },
-];
 
 @NgModule({
     declarations: [
@@ -66,8 +33,8 @@ const appRoutes: Routes = [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        RouterModule.forRoot(appRoutes),
-
+        RouterModule.forRoot([]),
+        AppRoutingModule,
         TranslateModule.forRoot(),
         InMemoryWebApiModule.forRoot(FakeDbService, {
             delay: 0,
