@@ -142,13 +142,13 @@ export const navigation: FuseNavigation[] = [
                         url: '/photographer',
                         exactMatch: true
                     },
-                    {
-                        id: 'add',
-                        title: 'Add Photographer',
-                        type: 'item',
-                        url: '/photographer/add',
-                        exactMatch: true
-                    },
+                    // {
+                    //     id: 'add',
+                    //     title: 'Add Photographer',
+                    //     type: 'item',
+                    //     url: '/photographer/add',
+                    //     exactMatch: true
+                    // },
                 ]
             },
             {
@@ -165,13 +165,13 @@ export const navigation: FuseNavigation[] = [
                         url: '/sales-representative',
                         exactMatch: true
                     },
-                    {
-                        id: 'add',
-                        title: 'Add Sales Representative',
-                        type: 'item',
-                        url: '/sales-representative/add',
-                        exactMatch: true
-                    },
+                    // {
+                    //     id: 'add',
+                    //     title: 'Add Sales Representative',
+                    //     type: 'item',
+                    //     url: '/sales-representative/add',
+                    //     exactMatch: true
+                    // },
                 ]
             },
             {

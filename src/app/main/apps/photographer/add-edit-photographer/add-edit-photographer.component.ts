@@ -5,6 +5,7 @@ import { NotificationService } from 'app/common/services/notification.service';
 import { Router } from '@angular/router';
 import { ValidateInteger } from 'app/common/validation/custom-form-froup.validator';
 import { StatusList } from 'app/common/constant/status-list.constant';
+import { ValidateString } from '../../../../common/validation/custom-form-froup.validator';
 
 @Component({
   selector: 'app-add-edit-photographer',
@@ -25,14 +26,14 @@ export class AddEditPhotographerComponent implements OnInit {
   ngOnInit(): void {
     this.pageType = 'add';
     this.editForm = this._formBuilder.group({
-      firstName: ['', Validators.required],
+      firstName: ['', ValidateString],
       lastName: [''],
-      username: ['', Validators.required],
+      username: ['', ValidateString],
       email: ['', [Validators.required, Validators.email]],
       mobile_number: [, [Validators.required, Validators.minLength(7), Validators.maxLength(15), ValidateInteger]],
       status: [this.statusList[0].id, Validators.required],
       colorCode: ['', [Validators.maxLength(6), Validators.minLength(6)]],
-      unique_url: ['', Validators.required],
+      unique_url: ['', ValidateString],
     });
   }
   async formSubmit() {
@@ -44,7 +45,15 @@ export class AddEditPhotographerComponent implements OnInit {
       console.log('addPhotoGrapherResponse', addPhotoGrapherResponse);
       this.editForm.enable();
       if (!addPhotoGrapherResponse.status) {
-
+        const validationErrors = addPhotoGrapherResponse['data'];
+        Object.keys(validationErrors).forEach(prop => {
+          const formControl = this.editForm.get(prop);
+          if (formControl) {
+            formControl.setErrors({
+              serverError: validationErrors[prop][0]
+            });
+          }
+        });
       } else {
         this._notificationService.openSnakBar(addPhotoGrapherResponse.message, 'success');
         this._router.navigate(['/admin']);
