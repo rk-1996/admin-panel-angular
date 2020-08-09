@@ -31,11 +31,11 @@ export class AddEditAdminComponent implements OnInit {
       username: ['', ValidateString],
       email: ['', [Validators.required, Validators.email]],
       mobile_number: [, [Validators.required, Validators.minLength(7), Validators.maxLength(15), ValidateInteger]],
-      profitSharePercentage: [],
+      profit_share_percent: [],
       status: [this.statusList[0].id, Validators.required],
       photo: [],
       unique_url: ['', ValidateString],
-      illinoisEmail: ['', [Validators.email]],
+      illinois_email: ['', [Validators.email]],
     });
   }
   public findInvalidControls() {

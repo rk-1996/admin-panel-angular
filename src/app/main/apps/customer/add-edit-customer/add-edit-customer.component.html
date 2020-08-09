@@ -11,6 +11,16 @@
             </div>
             <div class="h1 mt-16">Add new customer</div>
         </div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <button mat-raised-button type="button" [disabled]="editForm.invalid || editForm.pristine ||
+            editForm.disabled" *ngIf="pageType ==='add'" (click)="formSubmit()">
+                Submit
+            </button>
+            &nbsp;&nbsp;
+            <button mat-raised-button type="button" color="warn">
+                Cancel
+            </button>
+        </div>
     </div>
     <!-- / HEADER -->
 
@@ -30,7 +40,12 @@
                         <mat-label>First name</mat-label>
                         <input matInput formControlName="firstName" required>
                         <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                        <mat-error>First Name is required!</mat-error>
+                        <mat-error *ngIf="editForm.get('firstName').errors?.required">
+                            Please Enter First Name
+                        </mat-error>
+                        <mat-error *ngIf="editForm.get('firstName').errors?.invalidValue">
+                            Please Enter Valid First Name
+                        </mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" fxFlex="50" class="width-100 pl-4">
@@ -54,12 +69,15 @@
                                     editForm.get('email').hasError('email')">
                             Please enter a valid email address
                         </mat-error>
+                        <mat-error *ngIf="editForm.get('email').errors?.serverError">
+                            {{ editForm.get('email').errors?.serverError }}
+                        </mat-error>
                     </mat-form-field>
 
-                    <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-form-field appearance="outline" fxFlex="50" class="pl-4">
                         <mat-label>Reference</mat-label>
-                        <mat-select formControlName="reference">
-                            <mat-option [value]="'United States of America'">
+                        <mat-select formControlName="reference_id">
+                            <!-- <mat-option [value]="'United States of America'">
                                 United States of America
                             </mat-option>
                             <mat-option [value]="'United Kingdom'">
@@ -76,7 +94,7 @@
                             </mat-option>
                             <mat-option [value]="'Turkey'">
                                 Turkey
-                            </mat-option>
+                            </mat-option> -->
                         </mat-select>
                     </mat-form-field>
 
@@ -88,13 +106,21 @@
                         <mat-label>Phone</mat-label>
                         <input matInput formControlName="mobile_number" required>
                         <mat-icon matSuffix class="secondary-text">local_phone</mat-icon>
-                        <mat-error>Phone number must be between 7 to 15 digits</mat-error>
+                        <mat-error *ngIf="!editForm.get('mobile_number').errors?.serverError">
+                            Phone number must be between 7 to 15 digits
+                        </mat-error>
+                        <mat-error *ngIf="editForm.get('mobile_number').errors?.serverError">
+                            {{ editForm.get('mobile_number').errors?.serverError }}
+                        </mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" fxFlex="50" class="pl-4">
                         <mat-label>Website</mat-label>
                         <input matInput formControlName="website">
                         <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                        <mat-error *ngIf="editForm.get('website').errors?.serverError">
+                            {{ editForm.get('website').errors?.serverError }}
+                        </mat-error>
                     </mat-form-field>
 
                 </div>
@@ -108,13 +134,16 @@
                     </mat-form-field>
 
                     <div class="pl-4">
-                        <mat-label>Broker logo</mat-label>&nbsp;&nbsp;
                         <button type="button" (click)="uploadBrokerLogo.click()" mat-raised-button type="button"
-                            color="accent" status="success">
-                            <span>Upload</span>
+                            color="accent">
+                            <span>Upload Broker logo</span>
                             <input #uploadBrokerLogo type="file" (change)="onFileChange($event,'broker_logo')"
                                 style="display:none;" accept="image/*" />
                         </button>
+                        <mat-label> {{ editForm.get('broker_logo')?.value?.name }}</mat-label>
+                        <mat-error *ngIf="editForm.get('broker_logo').errors?.serverError">
+                            {{ editForm.get('broker_logo').errors?.serverError }}
+                        </mat-error>
                     </div>
 
                 </div>
@@ -127,36 +156,41 @@
                         <mat-icon matSuffix class="secondary-text">group</mat-icon>
                     </mat-form-field>
                     <div class="pl-4">
-                        <mat-label>Group logo</mat-label>&nbsp;&nbsp;
                         <button type="button" (click)="uploadGroupLogo.click()" mat-raised-button type="button"
-                            color="accent" status="success">
-                            <span>Upload</span>
+                            color="accent">
+                            <span>Upload Group logo</span>
                             <input #uploadGroupLogo type="file" (change)="onFileChange($event,'group_logo')"
                                 style="display:none;" accept="image/*" />
                         </button>
+                        <mat-label> {{ editForm.get('group_logo')?.value?.name }}</mat-label>
+                        <mat-error *ngIf="editForm.get('group_logo').errors?.serverError">
+                            {{ editForm.get('group_logo').errors?.serverError }}
+                        </mat-error>
                     </div>
 
                 </div>
 
                 <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
-                    <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
                         <mat-label>Status</mat-label>
                         <mat-select formControlName="status" required>
                             <mat-option *ngFor="let statusItem of statusList" [value]="statusItem.id">
                                 {{statusItem.name}}</mat-option>
                         </mat-select>
-                        <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
                         <mat-error>status is required!</mat-error>
                     </mat-form-field>
                     <div class="pl-4">
-                        <mat-label>Additional logo</mat-label>&nbsp;&nbsp;
                         <button type="button" (click)="uploadAdditionalLogo.click()" mat-raised-button type="button"
                             color="accent" status="success">
-                            <span>Upload</span>
+                            <span>Upload Additional logo</span>
                             <input #uploadAdditionalLogo type="file" (change)="onFileChange($event,'adtional_logo')"
                                 style="display:none;" accept="image/*" />
                         </button>
+                        <mat-label> {{ editForm.get('adtional_logo')?.value?.name }}</mat-label>
+                        <mat-error *ngIf="editForm.get('adtional_logo').errors?.serverError">
+                            {{ editForm.get('adtional_logo').errors?.serverError }}
+                        </mat-error>
                     </div>
 
                 </div>
@@ -167,20 +201,19 @@
                         <mat-label>Unique URL</mat-label>
                         <input matInput formControlName="unique_url" required>
                         <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                        <mat-error>Unique URL is required!</mat-error>
+                        <mat-error *ngIf="editForm.get('unique_url').errors?.required">
+                            Please Enter Unique Url
+                        </mat-error>
+                        <mat-error *ngIf="editForm.get('unique_url').errors?.invalidValue">
+                            Please Enter Valid Unique Url
+                        </mat-error>
+                        <mat-error *ngIf="editForm.get('unique_url').errors?.serverError">
+                            {{ editForm.get('unique_url').errors?.serverError }}
+                        </mat-error>
                     </mat-form-field>
 
                 </div>
-                <div fxLayout="row" fxLayoutAlign="center center">
-                    <button mat-raised-button type="button" color="accent" [disabled]="editForm.invalid || editForm.pristine ||
-                    editForm.disabled" *ngIf="pageType ==='add'" (click)="formSubmit()">
-                        Add
-                    </button>
-                    &nbsp;&nbsp;
-                    <button mat-raised-button type="button" color="warn">
-                        Cancel
-                    </button>
-                </div>
+
 
             </form>
         </div>

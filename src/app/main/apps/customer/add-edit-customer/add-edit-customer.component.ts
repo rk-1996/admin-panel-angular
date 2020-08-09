@@ -4,7 +4,7 @@ import { ApiService } from '../../../../common/services/api.service';
 import { NotificationService } from '../../../../common/services/notification.service';
 import { Router } from '@angular/router';
 import { StatusList } from '../../../../common/constant/status-list.constant';
-import { ValidateInteger } from '../../../../common/validation/custom-form-froup.validator';
+import { ValidateInteger, ValidateString } from '../../../../common/validation/custom-form-froup.validator';
 
 @Component({
   selector: 'app-add-edit-customer',
@@ -25,25 +25,19 @@ export class AddEditCustomerComponent implements OnInit {
   ngOnInit(): void {
     this.pageType = 'add';
     this.editForm = this._formBuilder.group({
-      company: [
-        {
-          value: 'Google',
-          disabled: true
-        }, Validators.required
-      ],
-      firstName: ['', Validators.required],
+      firstName: ['', ValidateString],
       lastName: [''],
       email: ['', [Validators.required, Validators.email]],
-      reference: [''],
+      reference_id: [],
       mobile_number: [, [Validators.required, Validators.minLength(7), Validators.maxLength(15), ValidateInteger]],
       website: [''],
       brokrage_name: [],
       broker_logo: [],
       group_name: [],
-      group_logo: ['', Validators.required],
+      group_logo: [],
       status: [this.statusList[0].id, Validators.required],
-      adtional_logo: ['', Validators.required],
-      unique_url: ['', Validators.required]
+      adtional_logo: [],
+      unique_url: ['', ValidateString]
     });
   }
 
@@ -56,7 +50,15 @@ export class AddEditCustomerComponent implements OnInit {
       console.log('addCustomerResponse', addCustomerResponse);
       this.editForm.enable();
       if (!addCustomerResponse.status) {
-
+        const validationErrors = addCustomerResponse['data'];
+        Object.keys(validationErrors).forEach(prop => {
+          const formControl = this.editForm.get(prop);
+          if (formControl) {
+            formControl.setErrors({
+              serverError: validationErrors[prop][0]
+            });
+          }
+        });
       } else {
         this._notificationService.openSnakBar(addCustomerResponse.message, 'success');
         this._router.navigate(['/customer']);

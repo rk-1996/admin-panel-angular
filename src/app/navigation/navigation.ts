@@ -96,13 +96,13 @@ export const navigation: FuseNavigation[] = [
                         url: '/customer',
                         exactMatch: true
                     },
-                    {
-                        id: 'add',
-                        title: 'Add Customer',
-                        type: 'item',
-                        url: '/customer/add',
-                        exactMatch: true
-                    },
+                    // {
+                    //     id: 'add',
+                    //     title: 'Add Customer',
+                    //     type: 'item',
+                    //     url: '/customer/add',
+                    //     exactMatch: true
+                    // },
                 ]
             },
             {
@@ -119,13 +119,13 @@ export const navigation: FuseNavigation[] = [
                         url: '/admin',
                         exactMatch: true
                     },
-                    {
-                        id: 'add',
-                        title: 'Add Admin',
-                        type: 'item',
-                        url: '/admin/add',
-                        exactMatch: true
-                    },
+                    // {
+                    //     id: 'add',
+                    //     title: 'Add Admin',
+                    //     type: 'item',
+                    //     url: '/admin/add',
+                    //     exactMatch: true
+                    // },
                 ]
             },
             {
