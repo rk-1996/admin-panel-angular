@@ -13,7 +13,7 @@ import { ValidateInteger, ValidateString } from '../../../../common/validation/c
 })
 export class AddEditAdminComponent implements OnInit {
   pageType: string;
-  adminForm: FormGroup;
+  editForm: FormGroup;
   statusList = StatusList;
   fileName: any
   constructor(
@@ -25,7 +25,7 @@ export class AddEditAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.pageType = 'add';
-    this.adminForm = this._formBuilder.group({
+    this.editForm = this._formBuilder.group({
       firstName: ['', ValidateString],
       lastName: ['',],
       username: ['', ValidateString],
@@ -40,7 +40,7 @@ export class AddEditAdminComponent implements OnInit {
   }
   public findInvalidControls() {
     const invalid = [];
-    const controls = this.adminForm.controls;
+    const controls = this.editForm.controls;
     for (const name in controls) {
       if (controls[name].invalid) {
         console.log('name', name);
@@ -51,16 +51,16 @@ export class AddEditAdminComponent implements OnInit {
   }
   async formSubmit() {
     try {
-      this.adminForm.disable();
-      const adminData = { ...this.adminForm.value };
+      this.editForm.disable();
+      const adminData = { ...this.editForm.value };
       adminData.full_name = adminData.firstName + ' ' + adminData.lastName;
       const addAdminResponse = await this._apiService.addAdmin(adminData);
       console.log('addAdminResponse', addAdminResponse);
-      this.adminForm.enable();
+      this.editForm.enable();
       if (!addAdminResponse.status) {
         const validationErrors = addAdminResponse['data'];
         Object.keys(validationErrors).forEach(prop => {
-          const formControl = this.adminForm.get(prop);
+          const formControl = this.editForm.get(prop);
           if (formControl) {
             formControl.setErrors({
               serverError: validationErrors[prop][0]
@@ -80,7 +80,7 @@ export class AddEditAdminComponent implements OnInit {
       const file = event.target.files[0];
       console.log(file.name)
       this.fileName = file.name
-      this.adminForm.patchValue({
+      this.editForm.patchValue({
         photo: file
       });
     }

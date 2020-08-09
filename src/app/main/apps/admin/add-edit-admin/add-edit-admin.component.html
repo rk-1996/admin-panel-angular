@@ -11,13 +11,13 @@
             </div>
             <div class="h1 mt-16">Add New Admin</div>
         </div>
-        <!-- <button mat-raised-button class="save-product-button" [disabled]="adminForm.invalid || adminForm.pristine ||
-            adminForm.disabled" *ngIf="pageType ==='add'" (click)="formSubmit()">
+        <!-- <button mat-raised-button class="save-product-button" [disabled]="editForm.invalid || editForm.pristine ||
+            editForm.disabled" *ngIf="pageType ==='add'" (click)="formSubmit()">
             <span>ADD</span>
         </button> -->
         <div fxLayout="row" fxLayoutAlign="center center">
-            <button mat-raised-button type="button" [disabled]="adminForm.invalid || adminForm.pristine ||
-                    adminForm.disabled" *ngIf="pageType ==='add'" (click)="formSubmit()">
+            <button mat-raised-button type="button" [disabled]="editForm.invalid || editForm.pristine ||
+                    editForm.disabled" *ngIf="pageType ==='add'" (click)="formSubmit()">
                 Submit
             </button>
             &nbsp;&nbsp;
@@ -33,7 +33,7 @@
 
         <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
             <form class="mat-card mat-elevation-z4 p-24 mr-24" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto"
-                name="adminForm" [formGroup]="adminForm">
+                name="editForm" [formGroup]="editForm">
 
                 <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
@@ -41,10 +41,10 @@
                         <mat-label>First name</mat-label>
                         <input matInput formControlName="firstName" required>
                         <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                        <mat-error *ngIf="adminForm.get('firstName').errors?.required">
+                        <mat-error *ngIf="editForm.get('firstName').errors?.required">
                             Please Enter First Name
                         </mat-error>
-                        <mat-error *ngIf="adminForm.get('firstName').errors?.invalidValue">
+                        <mat-error *ngIf="editForm.get('firstName').errors?.invalidValue">
                             Please Enter Valid First Name
                         </mat-error>
                     </mat-form-field>
@@ -63,29 +63,29 @@
                         <mat-label>Username</mat-label>
                         <input matInput formControlName="username" required>
                         <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                        <mat-error *ngIf="adminForm.get('username').errors?.required">
+                        <mat-error *ngIf="editForm.get('username').errors?.required">
                             Please Enter Username
                         </mat-error>
-                        <mat-error *ngIf="adminForm.get('username').errors?.invalidValue">
+                        <mat-error *ngIf="editForm.get('username').errors?.invalidValue">
                             Please Enter Valid Username
                         </mat-error>
-                        <mat-error *ngIf="adminForm.get('username').errors?.serverError">
-                            {{ adminForm.get('username').errors?.serverError }}
+                        <mat-error *ngIf="editForm.get('username').errors?.serverError">
+                            {{ editForm.get('username').errors?.serverError }}
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" fxFlex="50" class="pl-4">
                         <mat-label>Email</mat-label>
                         <input matInput formControlName="email" required>
                         <mat-icon matSuffix class="secondary-text">email</mat-icon>
-                        <mat-error *ngIf="adminForm.get('email').hasError('required')">
+                        <mat-error *ngIf="editForm.get('email').hasError('required')">
                             Email is required
                         </mat-error>
-                        <mat-error *ngIf="!adminForm.get('email').hasError('required') &&
-                                    adminForm.get('email').hasError('email')">
+                        <mat-error *ngIf="!editForm.get('email').hasError('required') &&
+                                    editForm.get('email').hasError('email')">
                             Please enter a valid email address
                         </mat-error>
-                        <mat-error *ngIf="adminForm.get('email').errors?.serverError">
-                            {{ adminForm.get('email').errors?.serverError }}
+                        <mat-error *ngIf="editForm.get('email').errors?.serverError">
+                            {{ editForm.get('email').errors?.serverError }}
                         </mat-error>
                     </mat-form-field>
                 </div>
@@ -95,11 +95,11 @@
                         <mat-label>Phone</mat-label>
                         <input matInput formControlName="mobile_number" required>
                         <mat-icon matSuffix class="secondary-text">local_phone</mat-icon>
-                        <mat-error *ngIf="!adminForm.get('mobile_number').errors?.serverError">
+                        <mat-error *ngIf="!editForm.get('mobile_number').errors?.serverError">
                             Phone number must be between 7 to 15 digits
                         </mat-error>
-                        <mat-error *ngIf="adminForm.get('mobile_number').errors?.serverError">
-                            {{ adminForm.get('mobile_number').errors?.serverError }}
+                        <mat-error *ngIf="editForm.get('mobile_number').errors?.serverError">
+                            {{ editForm.get('mobile_number').errors?.serverError }}
                         </mat-error>
                     </mat-form-field>
 
@@ -111,8 +111,8 @@
                                 style="display:none;" accept="image/*" />
                         </button>
                         <mat-label>{{fileName}}</mat-label>
-                        <mat-error *ngIf="adminForm.get('photo').errors?.serverError">
-                            {{ adminForm.get('photo').errors?.serverError }}
+                        <mat-error *ngIf="editForm.get('photo').errors?.serverError">
+                            {{ editForm.get('photo').errors?.serverError }}
                         </mat-error>
                     </div>
                 </div>
@@ -121,8 +121,8 @@
                     <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
                         <mat-label>Profit Share Percentage</mat-label>
                         <input matInput formControlName="profit_share_percent" type="number">
-                        <mat-error *ngIf="adminForm.get('profit_share_percent').errors?.serverError">
-                            {{ adminForm.get('profit_share_percent').errors?.serverError }}
+                        <mat-error *ngIf="editForm.get('profit_share_percent').errors?.serverError">
+                            {{ editForm.get('profit_share_percent').errors?.serverError }}
                         </mat-error>
                     </mat-form-field>
 
@@ -130,11 +130,11 @@
                         <mat-label>Illinois Email </mat-label>
                         <input matInput formControlName="illinois_email">
                         <mat-icon matSuffix class="secondary-text">email</mat-icon>
-                        <mat-error *ngIf="adminForm.get('illinois_email').hasError('email')">
+                        <mat-error *ngIf="editForm.get('illinois_email').hasError('email')">
                             Please enter a valid email address
                         </mat-error>
-                        <mat-error *ngIf="adminForm.get('illinois_email').errors?.serverError">
-                            {{ adminForm.get('illinois_email').errors?.serverError }}
+                        <mat-error *ngIf="editForm.get('illinois_email').errors?.serverError">
+                            {{ editForm.get('illinois_email').errors?.serverError }}
                         </mat-error>
                     </mat-form-field>
 
@@ -148,22 +148,22 @@
                             <mat-option *ngFor="let statusItem of statusList" [value]="statusItem.id">
                                 {{statusItem.name}}</mat-option>
                         </mat-select>
-                        <mat-error *ngIf="adminForm.get('status').errors?.serverError">
-                            {{ adminForm.get('status').errors?.serverError }}
+                        <mat-error *ngIf="editForm.get('status').errors?.serverError">
+                            {{ editForm.get('status').errors?.serverError }}
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" fxFlex="50" class="pl-4">
                         <mat-label>Unique URL</mat-label>
                         <input matInput formControlName="unique_url" required>
                         <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                        <mat-error *ngIf="adminForm.get('unique_url').errors?.required">
+                        <mat-error *ngIf="editForm.get('unique_url').errors?.required">
                             Please Enter Unique Url
                         </mat-error>
-                        <mat-error *ngIf="adminForm.get('unique_url').errors?.invalidValue">
+                        <mat-error *ngIf="editForm.get('unique_url').errors?.invalidValue">
                             Please Enter Valid Unique Url
                         </mat-error>
-                        <mat-error *ngIf="adminForm.get('unique_url').errors?.serverError">
-                            {{ adminForm.get('unique_url').errors?.serverError }}
+                        <mat-error *ngIf="editForm.get('unique_url').errors?.serverError">
+                            {{ editForm.get('unique_url').errors?.serverError }}
                         </mat-error>
                     </mat-form-field>
                 </div>
