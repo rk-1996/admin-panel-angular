@@ -22,6 +22,9 @@ export const locale = {
             },
             'SALES_RE_PRESENTATIVE': {
                 'TITLE': 'Sales Representative',
+            },
+            'EDITOR': {
+                'TITLE': 'Editor',
             }
         }
     }

@@ -30,6 +30,10 @@ const routes: Routes = [
                 path: 'sales-representative',
                 loadChildren: () => import('./main/apps/sales-representative/sales-representative.module').then(m => m.SalesRepresentativeModule)
             },
+            {
+                path: 'editor',
+                loadChildren: () => import('./main/apps/editor/editor.module').then(m => m.EditorModule)
+            },
         ]
     },
     {

@@ -173,6 +173,22 @@ export const navigation: FuseNavigation[] = [
                         exactMatch: true
                     },
                 ]
+            },
+            {
+                id: 'editor',
+                title: 'Editor',
+                translate: 'NAV.EDITOR.TITLE',
+                type: 'collapsable',
+                icon: 'person',
+                children: [
+                    {
+                        id: 'editor',
+                        title: 'View Editors',
+                        type: 'item',
+                        url: '/editor',
+                        exactMatch: true
+                    }
+                ]
             }
         ]
     },
