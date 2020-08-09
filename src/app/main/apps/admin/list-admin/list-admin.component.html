@@ -23,8 +23,7 @@
             <!-- / APP TITLE -->
 
             <!-- ADD BUTTON -->
-            <button mat-raised-button [routerLink]="'/admin/add'"
-                class="add-product-button fuse-white mt-24 mt-md-0">
+            <button mat-raised-button [routerLink]="'/admin/add'" class="add-product-button fuse-white mt-24 mt-md-0">
                 <span>ADD NEW ADMIN</span>
             </button>
             <!-- / ADD BUTTON -->
@@ -104,7 +103,8 @@
             <!-- <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10"
                 [pageSizeOptions]="[5, 10, 25, 100]">
             </mat-paginator> -->
-            <mat-paginator #paginator [length]="_adminService.total" [pageIndex]="pageIndex" [pageSize]="pageSize">
+            <mat-paginator #paginator [length]="_adminService.total" [pageIndex]="pageIndex" [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions">
             </mat-paginator>
 
         </div>

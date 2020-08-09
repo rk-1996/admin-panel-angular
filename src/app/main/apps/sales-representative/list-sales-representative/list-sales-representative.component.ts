@@ -26,6 +26,7 @@ export class ListSalesRepresentativeComponent implements OnInit {
   pageEvent: PageEvent;
   pageIndex: number = 0;
   pageSize: number = ListingConstant.itemPerPage;
+  pageSizeOptions = ListingConstant.pageSizeOptions;
   constructor(
     public _salesRepresentativeService: SalesRepresentativeService
   ) {

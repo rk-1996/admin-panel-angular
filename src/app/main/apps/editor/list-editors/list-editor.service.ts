@@ -10,7 +10,8 @@ export class EditorService {
 
     getList(params) {
         const newParams = {
-            page: params.pageIndex + 1
+            page: params.pageIndex + 1,
+            limit: params.pageSize
         }
         return this.http.post(environment.apiUrl + 'get-editors', {}, { params: newParams }).pipe(
             map((res) => {

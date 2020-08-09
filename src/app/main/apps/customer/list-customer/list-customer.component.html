@@ -101,7 +101,8 @@
 
             </mat-table>
 
-            <mat-paginator #paginator [length]="_customerService.total" [pageIndex]="pageIndex" [pageSize]="pageSize">
+            <mat-paginator #paginator [length]="_customerService.total" [pageIndex]="pageIndex" [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions">
             </mat-paginator>
 
         </div>

@@ -10,7 +10,8 @@ export class CustomerService {
 
     getList(params) {
         const newParams = {
-            page: params.pageIndex + 1
+            page: params.pageIndex + 1,
+            limit: params.pageSize
         }
         return this.http.post(environment.apiUrl + 'get-customers', {}, { params: newParams }).pipe(
             map((res) => {

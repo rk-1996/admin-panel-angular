@@ -25,6 +25,7 @@ export class ListPhotographerComponent implements OnInit {
   sort: MatSort;
   pageIndex: number = 0;
   pageSize: number = ListingConstant.itemPerPage;
+  pageSizeOptions = ListingConstant.pageSizeOptions;
   constructor(
     public _photographerService: PhotographerService
   ) {
