@@ -15,6 +15,7 @@ export class AddEditAdminComponent implements OnInit {
   pageType: string;
   adminForm: FormGroup;
   statusList = StatusList;
+  fileName: any
   constructor(
     private _formBuilder: FormBuilder,
     private _apiService: ApiService,
@@ -69,6 +70,8 @@ export class AddEditAdminComponent implements OnInit {
   onFileChange(event) {
     if (event.target.files && event.target.files.length) {
       const file = event.target.files[0];
+      console.log(file.name)
+      this.fileName = file.name
       this.adminForm.patchValue({
         photo: file
       });

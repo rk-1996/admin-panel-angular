@@ -73,13 +73,13 @@
                     </mat-form-field>
 
                     <div class="pl-4">
-                        <mat-label>Profile Photo</mat-label>
                         <button type="button" (click)="uploadProfilePicture.click()" mat-raised-button type="button"
                             color="accent" status="success">
                             <span>Upload</span>
                             <input #uploadProfilePicture type="file" (change)="onFileChange($event)"
                                 style="display:none;" accept="image/*" />
                         </button>
+                        <mat-label>{{fileName}}</mat-label>
                     </div>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
