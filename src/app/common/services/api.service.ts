@@ -23,5 +23,8 @@ export class ApiService {
     addSalesRepresentative(salesRepresentativeData){
         return this.httpService.postWithFormData('add-sales-representative', salesRepresentativeData);
     }
+    addPhotoGrapher(sPhotoGrapherData){
+        return this.httpService.postWithFormData('add-photographer', sPhotoGrapherData);
+    }
 
 }
