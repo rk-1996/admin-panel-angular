@@ -4,7 +4,7 @@ import { ApiService } from '../../../../common/services/api.service';
 import { StatusList } from '../../../../common/constant/status-list.constant';
 import { NotificationService } from '../../../../common/services/notification.service';
 import { Router } from '@angular/router';
-import { ValidateInteger } from '../../../../common/validation/custom-form-froup.validator';
+import { ValidateInteger, ValidateString } from '../../../../common/validation/custom-form-froup.validator';
 
 @Component({
   selector: 'app-add-edit-admin',
@@ -26,15 +26,15 @@ export class AddEditAdminComponent implements OnInit {
   ngOnInit(): void {
     this.pageType = 'add';
     this.adminForm = this._formBuilder.group({
-      firstName: ['', Validators.required],
+      firstName: ['', ValidateString],
       lastName: ['',],
-      username: ['', Validators.required],
+      username: ['', ValidateString],
       email: ['', [Validators.required, Validators.email]],
       mobile_number: [, [Validators.required, Validators.minLength(7), Validators.maxLength(15), ValidateInteger]],
-      profitSharePercentage: [''],
+      profitSharePercentage: [],
       status: [this.statusList[0].id, Validators.required],
       photo: [],
-      unique_url: ['', Validators.required],
+      unique_url: ['', ValidateString],
       illinoisEmail: ['', [Validators.email]],
     });
   }
@@ -58,7 +58,15 @@ export class AddEditAdminComponent implements OnInit {
       console.log('addAdminResponse', addAdminResponse);
       this.adminForm.enable();
       if (!addAdminResponse.status) {
-
+        const validationErrors = addAdminResponse['data'];
+        Object.keys(validationErrors).forEach(prop => {
+          const formControl = this.adminForm.get(prop);
+          if (formControl) {
+            formControl.setErrors({
+              serverError: validationErrors[prop][0]
+            });
+          }
+        });
       } else {
         this._notificationService.openSnakBar(addAdminResponse.message, 'success');
         this._router.navigate(['/admin']);

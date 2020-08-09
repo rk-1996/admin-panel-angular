@@ -23,10 +23,10 @@
             <!-- / APP TITLE -->
 
             <!-- ADD BUTTON -->
-            <!-- <button mat-raised-button [routerLink]="'/admin/add'"
+            <button mat-raised-button [routerLink]="'/admin/add'"
                 class="add-product-button fuse-white mt-24 mt-md-0">
                 <span>ADD NEW ADMIN</span>
-            </button> -->
+            </button>
             <!-- / ADD BUTTON -->
 
         </div>
@@ -71,7 +71,7 @@
 
                 <!-- Price Column -->
                 <ng-container matColumnDef="loginAsAdmin">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>Login As Customer</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Login As Admin</mat-header-cell>
                     <mat-cell *matCellDef="let admin">
                         <p class="text-truncate">{{admin.loginAsAdmin}}</p>
                     </mat-cell>

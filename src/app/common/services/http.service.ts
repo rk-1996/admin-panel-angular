@@ -31,7 +31,9 @@ export class HttpService {
     postWithFormData(url, body = {}, params = {}): any {
         let formData: any = new FormData();
         for (let key in body) {
-            formData.append(key, body[key]);
+            if (body[key] != null) {
+                formData.append(key, body[key]);
+            }
         }
         const headers = new HttpHeaders({
             [InterceptorSkipContentTypeHeader]: ''
