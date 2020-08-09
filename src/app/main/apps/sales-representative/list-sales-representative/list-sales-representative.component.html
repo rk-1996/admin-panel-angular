@@ -77,19 +77,19 @@
 
                 <!-- Price Column -->
                 <ng-container matColumnDef="login_as_customer">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>Login As Customer</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Login As Sales Representative</mat-header-cell>
                     <mat-cell *matCellDef="let product">
                         <p class="text-truncate">{{product.login_as_customer}}</p>
                     </mat-cell>
                 </ng-container>
 
                 <!-- Quantity Column -->
-                <ng-container matColumnDef="is_subscribe">
+                <!-- <ng-container matColumnDef="is_subscribe">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Subscriber/Unsubscriber</mat-header-cell>
                     <mat-cell *matCellDef="let product">
                         <p class="text-truncate">{{product.is_subscribe}}</p>
                     </mat-cell>
-                </ng-container>
+                </ng-container> -->
 
                 <!-- Active Column -->
                 <ng-container matColumnDef="active">

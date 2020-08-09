@@ -17,7 +17,7 @@ import { fuseAnimations } from '@fuse/animations';
 })
 export class ListSalesRepresentativeComponent implements OnInit {
   dataSource: SalesRepresentativeDataSource | null;
-  displayedColumns = ['full_name', 'username', 'email', 'status', 'login_as_customer', 'is_subscribe', 'active'];
+  displayedColumns = ['full_name', 'username', 'email', 'status', 'login_as_customer', 'active'];
   @ViewChild(MatPaginator, { static: true })
   paginator: MatPaginator;
 
