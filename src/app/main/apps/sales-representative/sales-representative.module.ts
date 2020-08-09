@@ -25,6 +25,7 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseWidgetModule } from '@fuse/components';
 import { SalesRepresentativeService } from './list-sales-representative/sales-representative-list.service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
     FuseSharedModule,
     FuseWidgetModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    RouterModule
   ],
   providers: [SalesRepresentativeService]
 })

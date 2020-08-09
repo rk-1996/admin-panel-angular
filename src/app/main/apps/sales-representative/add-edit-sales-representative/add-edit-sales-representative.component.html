@@ -11,6 +11,16 @@
             </div>
             <div class="h1 mt-16">Add New Sales Representative</div>
         </div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <button mat-raised-button type="button" [disabled]="editForm.invalid || editForm.pristine ||
+            editForm.disabled" *ngIf="pageType ==='add'" (click)="formSubmit()">
+                Add
+            </button>
+            &nbsp;&nbsp;
+            <button mat-raised-button type="button" color="warn" [routerLink]="['/sales-representative']">
+                Cancel
+            </button>
+        </div>
     </div>
     <!-- / HEADER -->
 
@@ -27,14 +37,18 @@
                         <mat-label>First name</mat-label>
                         <input matInput formControlName="firstName" required>
                         <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                        <mat-error>First Name is required!</mat-error>
+                        <mat-error *ngIf="editForm.get('firstName').errors?.required">
+                            Please Enter First Name
+                        </mat-error>
+                        <mat-error *ngIf="editForm.get('firstName').errors?.invalidValue">
+                            Please Enter Valid First Name
+                        </mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" fxFlex="50" class="pl-4">
                         <mat-label>Last name</mat-label>
                         <input matInput formControlName="lastName">
                         <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                        <mat-error>Last Name is required!</mat-error>
                     </mat-form-field>
 
                 </div>
@@ -44,9 +58,17 @@
                         <mat-label>Username</mat-label>
                         <input matInput formControlName="username" required>
                         <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                        <mat-error>Username is required!</mat-error>
+                        <mat-error *ngIf="editForm.get('username').errors?.required">
+                            Please Enter Username
+                        </mat-error>
+                        <mat-error *ngIf="editForm.get('username').errors?.invalidValue">
+                            Please Enter Valid Username
+                        </mat-error>
+                        <mat-error *ngIf="editForm.get('username').errors?.serverError">
+                            {{ editForm.get('username').errors?.serverError }}
+                        </mat-error>
                     </mat-form-field>
-                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                    <mat-form-field appearance="outline" fxFlex="50" class="pl-4">
                         <mat-label>Email</mat-label>
                         <input matInput formControlName="email" required>
                         <mat-icon matSuffix class="secondary-text">email</mat-icon>
@@ -57,6 +79,9 @@
                                     editForm.get('email').hasError('email')">
                             Please enter a valid email address
                         </mat-error>
+                        <mat-error *ngIf="editForm.get('email').errors?.serverError">
+                            {{ editForm.get('email').errors?.serverError }}
+                        </mat-error>
                     </mat-form-field>
                 </div>
 
@@ -65,32 +90,51 @@
                         <mat-label>Phone</mat-label>
                         <input matInput formControlName="mobile_number" required>
                         <mat-icon matSuffix class="secondary-text">local_phone</mat-icon>
-                        <mat-error>Phone number must be between 7 to 15 digits</mat-error>
+                        <mat-error *ngIf="!editForm.get('mobile_number').errors?.serverError">
+                            Phone number must be between 7 to 15 digits
+                        </mat-error>
+                        <mat-error *ngIf="editForm.get('mobile_number').errors?.serverError">
+                            {{ editForm.get('mobile_number').errors?.serverError }}
+                        </mat-error>
                     </mat-form-field>
 
                     <div class="pl-4">
-                        <mat-label>Profile Photo</mat-label>
                         <button type="button" (click)="uploadProfilePicture.click()" mat-raised-button type="button"
                             color="accent" status="success">
-                            <span>Upload</span>
+                            <span>Upload Profile Photo</span>
                             <input #uploadProfilePicture type="file" (change)="onFileChange($event)"
                                 style="display:none;" accept="image/*" />
                         </button>
+                        <mat-error *ngIf="editForm.get('photo').errors?.serverError">
+                            {{ editForm.get('photo').errors?.serverError }}
+                        </mat-error>
+                        <mat-label> {{ editForm.get('photo')?.value?.name }}</mat-label>
                     </div>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
-                    <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
                         <mat-label>Status</mat-label>
                         <mat-select formControlName="status">
                             <mat-option *ngFor="let statusItem of statusList" [value]="statusItem.id">
                                 {{statusItem.name}}</mat-option>
+                            <mat-error *ngIf="editForm.get('status').errors?.serverError">
+                                {{ editForm.get('status').errors?.serverError }}
+                            </mat-error>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                    <mat-form-field appearance="outline" fxFlex="50" class="pl-4">
                         <mat-label>Unique URL</mat-label>
                         <input matInput formControlName="unique_url" required>
                         <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                        <mat-error>Unique URL is required!</mat-error>
+                        <mat-error *ngIf="editForm.get('unique_url').errors?.required">
+                            Please Enter Unique Url
+                        </mat-error>
+                        <mat-error *ngIf="editForm.get('unique_url').errors?.invalidValue">
+                            Please Enter Valid Unique Url
+                        </mat-error>
+                        <mat-error *ngIf="editForm.get('unique_url').errors?.serverError">
+                            {{ editForm.get('unique_url').errors?.serverError }}
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <!-- <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
@@ -101,18 +145,6 @@
                         </mat-checkbox>
                     </mat-form-field>
                 </div> -->
-
-
-                <div fxLayout="row" fxLayoutAlign="center center">
-                    <button mat-raised-button type="button" color="accent" [disabled]="editForm.invalid || editForm.pristine ||
-                    editForm.disabled" *ngIf="pageType ==='add'" (click)="formSubmit()">
-                        Add
-                    </button>
-                    &nbsp;&nbsp;
-                    <button mat-raised-button type="button" color="warn">
-                        Cancel
-                    </button>
-                </div>
             </form>
         </div>
     </div>

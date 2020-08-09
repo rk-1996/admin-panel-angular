@@ -26,7 +26,6 @@ import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 import { PhotographerRoutingModule } from './photographer-routing.module';
 import { AddEditPhotographerComponent } from './add-edit-photographer/add-edit-photographer.component';
 import { ListPhotographerComponent } from './list-photographer/list-photographer.component';
-import { MaterialModule } from '../../../material/material.module';
 import { PhotographerService } from './photographer-list.service';
 
 
@@ -56,7 +55,8 @@ import { PhotographerService } from './photographer-list.service';
     }),
 
     FuseSharedModule,
-    FuseWidgetModule
+    FuseWidgetModule,
+    RouterModule
   ],
   providers: [PhotographerService],
   exports: [

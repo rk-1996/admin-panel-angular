@@ -56,7 +56,8 @@ import { CustomerService } from './customer-list.service';
     }),
 
     FuseSharedModule,
-    FuseWidgetModule
+    FuseWidgetModule,
+    RouterModule
   ],
   providers: [
     CustomerService

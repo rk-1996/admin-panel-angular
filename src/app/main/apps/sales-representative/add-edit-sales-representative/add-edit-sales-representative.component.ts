@@ -5,6 +5,7 @@ import { ApiService } from 'app/common/services/api.service';
 import { NotificationService } from 'app/common/services/notification.service';
 import { Router } from '@angular/router';
 import { ValidateInteger } from 'app/common/validation/custom-form-froup.validator';
+import { ValidateString } from '../../../../common/validation/custom-form-froup.validator';
 
 @Component({
   selector: 'app-add-edit-sales-representative',
@@ -25,9 +26,9 @@ export class AddEditSalesRepresentativeComponent implements OnInit {
   ngOnInit(): void {
     this.pageType = 'add';
     this.editForm = this._formBuilder.group({
-      firstName: ['', Validators.required],
+      firstName: ['', ValidateString],
       lastName: ['',],
-      username: ['', Validators.required],
+      username: ['', ValidateString],
       email: ['', [Validators.required, Validators.email]],
       mobile_number: [, [Validators.required, Validators.minLength(7), Validators.maxLength(15), ValidateInteger]],
       profitSharePercentage: [''],
@@ -48,7 +49,15 @@ export class AddEditSalesRepresentativeComponent implements OnInit {
       console.log('apiResponse', apiResponse);
       this.editForm.enable();
       if (!apiResponse.status) {
-
+        const validationErrors = apiResponse['data'];
+        Object.keys(validationErrors).forEach(prop => {
+          const formControl = this.editForm.get(prop);
+          if (formControl) {
+            formControl.setErrors({
+              serverError: validationErrors[prop][0]
+            });
+          }
+        });
       } else {
         this._notificationService.openSnakBar(apiResponse.message, 'success');
         this._router.navigate(['/admin']);
